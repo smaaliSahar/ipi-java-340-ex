@@ -27,6 +27,7 @@ public class EmployeRepositoryTest {
 
     @Before
     public void setUp(){
+        commercialRepository.deleteAll();
         employeRepository.deleteAll();
         employeRepository.save(pierreDurand);
         employeRepository.save(jeanJacques);
@@ -35,6 +36,9 @@ public class EmployeRepositoryTest {
 
     @Autowired
     EmployeRepository employeRepository;
+
+    @Autowired
+    CommercialRepository commercialRepository;
 
     @Test
     public void testFindByNomOrPrenomAllIgnoreCasePrenom(){
