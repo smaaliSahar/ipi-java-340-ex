@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 public interface BaseEmployeRepository<T extends Employe> extends PagingAndSortingRepository<T, Long> {
@@ -30,4 +31,8 @@ public interface BaseEmployeRepository<T extends Employe> extends PagingAndSorti
 
     @Query(value = "SELECT * FROM Employe WHERE salaire > (SELECT avg(e2.salaire) FROM Employe e2)", nativeQuery = true)
     List<T> findEmployePlusRiches();
+
+    public default Integer test(){
+        throw new EntityNotFoundException("Exception");
+    }
 }

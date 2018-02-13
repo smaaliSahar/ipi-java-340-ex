@@ -1,1 +1,7 @@
 language: java
+
+addons:
+  sonarcloud:
+    organization: "pjvilloud-github"
+
+script: mvn clean install sonar:sonar

@@ -75,7 +75,7 @@ public class Manager extends Employe {
 	/**
 	 * @param equipe the equipe to set
 	 */
-	public void setEquipe(HashSet<Technicien> equipe) {
+	public void setEquipe(Set<Technicien> equipe) {
 		this.equipe = equipe;
 	}
 

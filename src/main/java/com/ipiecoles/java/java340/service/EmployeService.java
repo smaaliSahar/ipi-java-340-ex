@@ -51,4 +51,7 @@ public class EmployeService {
         return employe;
     }
 
+    public Integer testService(){
+        return employeRepository.test();
+    }
 }
