@@ -34,11 +34,10 @@ public class EmployeRepositoryTest {
     public void setUp() throws EmployeException {
         employeRepository.deleteAll();
         pierreDurand = new Commercial("Durand", "Pierre", "C12345", new LocalDate(), 1500d, 0d,0);
-        pierreDurand = CommercialBuilder.aCommercial().withPrenom("Pierre").build();
         jeanJacques = new Commercial("Jean-Jacques", "Jean", "C12346", new LocalDate(), 1500d, 0d,0);
         jacquesDupond = new Commercial("Dupond", "Jean-Jacques", "C12347", new LocalDate(), 1500d, 0d,0);
 
-        pierreDurand = employeRepository.save(CommercialMaker.aCommercial().withPrenom("test").build());
+        pierreDurand = employeRepository.save(pierreDurand);
         jeanJacques = employeRepository.save(jeanJacques);
         jacquesDupond = employeRepository.save(jacquesDupond);
     }
@@ -53,7 +52,7 @@ public class EmployeRepositoryTest {
         //Given
 
         //When
-        List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("pieRre");
+        List<Employe> employes = employeRepository.findByNomOrPrenomAllIgnoreCase("pierre");
 
         //Then
         Assertions.assertThat(employes).hasSize(1);
