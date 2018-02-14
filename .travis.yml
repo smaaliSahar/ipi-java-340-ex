@@ -4,8 +4,4 @@ addons:
   sonarcloud:
     organization: "pjvilloud-github"
 
-script:
-   # other script steps might be done before running the actual analysis
-   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install; fi'
-   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar; fi'
-  #- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.host.url=https://sonarcloud.io
+script: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.organization=pjvilloud-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=com.ipiecoles.java:java340:master  -Dsonar.branch=master
